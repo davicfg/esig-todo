@@ -1,7 +1,9 @@
+# Configuração do thymeleaf 
+spring.thymeleaf.enabled=false
+
 spring.datasource.username=USUARIO
 spring.datasource.password=SENHA
 spring.datasource.url= jdbc:postgresql://ENDERECO:PORTA/BANCO
-
 
 spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults=false
 spring.jpa.database-platform=org.hibernate.dialect.PostgreSQL9Dialect

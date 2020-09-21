@@ -1,10 +1,10 @@
-package br.com.esig.todo.todo;
+package br.com.esig.teste;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TodoApplicationTests {
+class TesteApplicationTests {
 
 	@Test
 	void contextLoads() {
