@@ -19,6 +19,7 @@ public class Tarefa {
 	private Boolean estado;
 
 	public Tarefa() {
+		this.id = null;
 		this.estado = false;
 	}
 
@@ -36,4 +37,20 @@ public class Tarefa {
 		this.descricao = descricao;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+	
 }

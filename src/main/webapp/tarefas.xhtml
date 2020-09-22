@@ -1,17 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
 	<title>Sua lista de tarefas</title>
-</h:head> 
-<body> 
+</h:head>
+<body>
 	<h1>Tarefas</h1>
-	<h:form>
-		Nova Tarefa: <h:inputText value="#{tarefaController.novaTarefa.descricao}"></h:inputText>
-		<h:commandButton action="#{tarefaController.salvar}" value="Cadastrar"></h:commandButton>
+	<h:form id="formNovaTarefa">
+		Nova Tarefa: <h:inputText
+			value="#{tarefaController.novaTarefa.descricao}"></h:inputText>
+		<h:commandButton action="#{tarefaController.salvar}" value="Cadastrar">
+			<f:ajax execute="formNovaTarefa" render="dtTarefas"></f:ajax>
+		</h:commandButton>
 	</h:form>
-</body> 
+	<h:dataTable value="#{tarefaController.tarefas}" var="t" id="dtTarefas">
+		<h:column>
+			#{t.id}
+		</h:column>
+		<h:column>
+			#{t.descricao}
+		</h:column>
+		<h:column>
+			#{t.estado}
+		</h:column>
+	</h:dataTable>
+</body>
 </html>
