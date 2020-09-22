@@ -27,22 +27,33 @@ public class TarefaController {
 
 	public void salvar() {
 		tarefaRepository.save(novaTarefa);
-		
-		//"Limpar" o objeto que tem dados atuais para não ficar salvando os dados de forma repiditida
+
+		// "Limpar" o objeto que tem dados atuais para não ficar salvando os dados de
+		// forma repiditida
 		novaTarefa = new Tarefa();
-		
-		//Atualizar a lista de tarefas a ser exibida depois de salvar
+
+		// Atualizar a lista de tarefas a ser exibida depois de salvar
 		tarefas.clear();
 		setTarefas(tarefaRepository.buscarTodos());
 	}
-	
+
 	public void deletar(Tarefa deletarTarefa) {
 		tarefaRepository.delete(deletarTarefa);
 		// Atualizar a lista de tarefas a ser exibida depois de salvar
-		// Estou usando o .clear() pq quando eu tendo remover da lista de tarefas ele não remove de fato
+		// Estou usando o .clear() pq quando eu tendo remover da lista de tarefas ele
+		// não remove de fato
 		tarefas.clear();
 		setTarefas(tarefaRepository.buscarTodos());
-		
+
+	}
+
+	public void mudaEstadoTarefa(Tarefa tarefa) {
+		tarefa.setEstado(!tarefa.getEstado());
+
+		tarefaRepository.save(tarefa);
+
+		int indexOf = tarefas.indexOf(tarefa);
+		tarefas.get(indexOf).setEstado(!tarefa.getEstado());
 	}
 
 	public Tarefa getNovaTarefa() {

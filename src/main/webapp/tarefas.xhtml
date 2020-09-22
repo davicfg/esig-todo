@@ -19,23 +19,19 @@
 		<h:dataTable value="#{tarefaController.tarefas}" var="t"
 			id="dtTarefas">
 			<h:column>
-			#{t.id}
+			<span style="#{t.estado eq true ? 'text-decoration: line-through;': 'text-decoration: none;' }"> #{t.descricao}</span>
 		</h:column>
-			<h:column>
-			#{t.descricao}
+		<h:column>
+			<h:selectBooleanCheckbox valueChangeListener="#{tarefaController.mudaEstadoTarefa(t)}" value="#{t.estado}" onchange="submit()">
+				<f:ajax render="formNovaTarefa:dtTarefas"></f:ajax>
+			</h:selectBooleanCheckbox>
 		</h:column>
-			<h:column>
-			#{t.estado}
+		<h:column>
+			<h:commandButton action="#{tarefaController.deletar(t)}"
+				value="excluir">
+				<f:ajax render="formNovaTarefa:dtTarefas"></f:ajax>
+			</h:commandButton>
 		</h:column>
-			<h:column>
-			#{t.estado}
-		</h:column>
-			<h:column>
-				<h:commandButton action="#{tarefaController.deletar(t)}"
-					value="excluir">
-					<f:ajax render="formNovaTarefa:dtTarefas"></f:ajax>
-				</h:commandButton>
-			</h:column>
 		</h:dataTable>
 	</h:form>
 
