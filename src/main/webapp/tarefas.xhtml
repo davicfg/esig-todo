@@ -15,17 +15,29 @@
 		<h:commandButton action="#{tarefaController.salvar}" value="Cadastrar">
 			<f:ajax execute="formNovaTarefa" render="dtTarefas"></f:ajax>
 		</h:commandButton>
-	</h:form>
-	<h:dataTable value="#{tarefaController.tarefas}" var="t" id="dtTarefas">
-		<h:column>
+
+		<h:dataTable value="#{tarefaController.tarefas}" var="t"
+			id="dtTarefas">
+			<h:column>
 			#{t.id}
 		</h:column>
-		<h:column>
+			<h:column>
 			#{t.descricao}
 		</h:column>
-		<h:column>
+			<h:column>
 			#{t.estado}
 		</h:column>
-	</h:dataTable>
+			<h:column>
+			#{t.estado}
+		</h:column>
+			<h:column>
+				<h:commandButton action="#{tarefaController.deletar(t)}"
+					value="excluir">
+					<f:ajax render="formNovaTarefa:dtTarefas"></f:ajax>
+				</h:commandButton>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+
 </body>
 </html>
