@@ -71,5 +71,9 @@ public class TarefaController {
 	public void setTarefas(List<Tarefa> tarefas) {
 		this.tarefas = tarefas;
 	}
+	
+	public int tamanhoListaTarefas() {
+		return tarefas.size();
+	}
 
 }

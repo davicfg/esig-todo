@@ -22,18 +22,22 @@
 			<span style="#{t.estado eq true ? 'text-decoration: line-through;': 'text-decoration: none;' }"> #{t.descricao}</span>
 		</h:column>
 		<h:column>
-			<h:selectBooleanCheckbox valueChangeListener="#{tarefaController.mudaEstadoTarefa(t)}" value="#{t.estado}" onchange="submit()">
+			<h:selectBooleanCheckbox valueChangeListener="#{tarefaController.mudaEstadoTarefa(t)}" value="#{t.estado}" onchange="submit()" class="checkTarefa">
 				<f:ajax render="formNovaTarefa:dtTarefas"></f:ajax>
 			</h:selectBooleanCheckbox>
 		</h:column>
 		<h:column>
 			<h:commandButton action="#{tarefaController.deletar(t)}"
-				value="excluir">
-				<f:ajax render="formNovaTarefa:dtTarefas"></f:ajax>
+				value="excluir" >
+				<f:ajax render="formNovaTarefa:dtTarefas" ></f:ajax>
 			</h:commandButton>
 		</h:column>
 		</h:dataTable>
 	</h:form>
-
+	<span>#{tarefaController.tamanhoListaTarefas()}</span>
+	<h:commandButton value="Todas" onclick="mostrarTodas();"></h:commandButton>
+	<h:commandButton value="A fazer" onclick="mostrartarefasAFazer();"></h:commandButton>
+	<h:commandButton value="Feitos" onclick="mostrartarefasFeitas();"></h:commandButton>
 </body>
+<script src="js/script.js" type="javascript"></script>
 </html>
