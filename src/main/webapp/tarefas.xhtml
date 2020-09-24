@@ -3,6 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
+	
 
 <h:head>
 	<title>Sua lista de tarefas</title>
@@ -11,15 +12,16 @@
 </h:head>
 <body>
 	<h1>Tarefas</h1>
-	<h:form id="formNovaTarefa">
-		Nova Tarefa: <h:inputText
-			value="#{tarefaController.novaTarefa.descricao}"></h:inputText>
-		<h:commandButton action="#{tarefaController.salvar}" value="Cadastrar">
-			<f:ajax execute="formNovaTarefa" render="dtTarefas"></f:ajax>
-		</h:commandButton>
-
+	<h:form id="formNovaTarefa" class="form-inline">
+		<div class="form-group mx-sm-3 mb-2">
+			<label for="descricao">Nova Tarefa:</label>  
+			<h:inputText id="decricao" value="#{tarefaController.novaTarefa.descricao}"></h:inputText>
+		</div>
+		<h:commandButton action="#{tarefaController.salvar}" value="Cadastrar" class="btn btn-primary mb-2 btn-sm">
+				<f:ajax execute="formNovaTarefa" render="dtTarefas"></f:ajax>
+			</h:commandButton>
 		<h:dataTable value="#{tarefaController.tarefas}" var="t"
-			id="dtTarefas">
+			id="dtTarefas" class="table">
 			<h:column>
 			<span style="#{t.estado eq true ? 'text-decoration: line-through;': 'text-decoration: none;' }"> #{t.descricao}</span>
 		</h:column>
@@ -30,17 +32,17 @@
 		</h:column>
 		<h:column>
 			<h:commandButton action="#{tarefaController.deletar(t)}"
-				value="excluir" >
+				value="excluir" class="btn btn-danger btn-sm">
 				<f:ajax render="formNovaTarefa:dtTarefas" ></f:ajax>
 			</h:commandButton>
 		</h:column>
 		</h:dataTable>
 	</h:form>
-	<span>#{tarefaController.tamanhoListaTarefas()} </span>
-	<br/>
-	<h:commandButton value="Todas" onclick="mostrarTodas();"></h:commandButton>
-	<h:commandButton value="A fazer" onclick="mostrartarefasAFazer();"></h:commandButton>
-	<h:commandButton value="Feitos" onclick="mostrartarefasFeitas();"></h:commandButton>
+	<div class="text-center">
+		<button type="button" onclick="mostrarTodas();" class="btn btn-info btn-sm">Todas</button>
+		<button type="button" onclick="mostrartarefasAFazer();" class="btn btn-warning btn-sm">A fazer</button>
+		<button type="button" onclick="mostrartarefasFeitas();" class="btn btn-success btn-sm">Feitos</button>
+	</div>
 	<h:outputScript name="script.js" library="js"></h:outputScript>
 </body>
 </html>
