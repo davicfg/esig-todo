@@ -12,7 +12,6 @@
 	<groupId>br.com.esig.todo</groupId>
 	<artifactId>todo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 	<name>todo</name>
 	<description>Desafio prático </description>
 
